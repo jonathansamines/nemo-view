@@ -1,5 +1,9 @@
 # nemo-view changelog
 
+## v3.0.0-alpha
+
+* upgrade to selenium-drivex 2
+
 ## v2.1.2
 
 * Adding ability to find elements under parent element using underscore methods (PR #52)
