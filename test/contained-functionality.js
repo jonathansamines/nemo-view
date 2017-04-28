@@ -1,5 +1,3 @@
-/* global before,after,describe,it */
-
 'use strict';
 
 var Nemo = require('nemo'),

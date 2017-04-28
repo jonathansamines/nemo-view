@@ -1,5 +1,3 @@
-/* global describe,before,after,beforeEach,it */
-
 'use strict';
 
 var path = require('path'),

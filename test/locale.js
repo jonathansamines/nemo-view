@@ -1,4 +1,3 @@
-/* global describe,before,after,beforeEach,it */
 'use strict';
 
 var Nemo = require('nemo'),
@@ -60,7 +59,7 @@ describe('nemo-view @locale@', function () {
         assert.equal(idValue, 'foo_text');
         return true;
       });
-    }).then(function (typeValue) {
+    }).then(function () {
       nemo._config.set('data:locale', 'DE');
       nemo.view.form.boxOuterLocale().then(function (elts) {
         elts[0].elt().getAttribute('id').then(function (idValue) {

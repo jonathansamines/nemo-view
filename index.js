@@ -12,8 +12,8 @@
  │   See the License for the specific language governing permissions and       │
  │   limitations under the License.                                            │
  \*───────────────────────────────────────────────────────────────────────────*/
-/* global require: true, module: true */
 "use strict";
+
 var View = require('./lib/view');
 var util = require('./util');
 var Locreator = require('./lib/locreator');

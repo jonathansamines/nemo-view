@@ -1,4 +1,3 @@
-/* global before,after,describe,beforeEach,it */
 'use strict';
 
 var Nemo = require('nemo'),
@@ -29,7 +28,7 @@ describe('nemo-view @select@', function () {
   it('should NOT select option by @OptionValue@negative@ method', function (done) {
     nemo.view.select.selectOptionValue('does not exist').then(function () {
       done(new Error('Correct option was not selected'));
-    }, function (err) {
+    }, function () {
       done();
     });
   });
@@ -43,7 +42,7 @@ describe('nemo-view @select@', function () {
   it('should NOT select option by @OptionText@negative@ method', function (done) {
     nemo.view.select.selectOptionText('does not exist').then(function () {
       done(new Error('Correct option was not selected'));
-    }, function (err) {
+    }, function () {
       done();
     });
   });

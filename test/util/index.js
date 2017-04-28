@@ -3,7 +3,7 @@ module.exports.waitForJSReady = function waitForJSReady(nemo) {
   return nemo.driver.wait(function() {
       return nemo.driver.executeScript(function() {
         if (window.$) {
-          return $('body').data('loaded');
+          return window.$('body').data('loaded');
         }
         return false;
       });

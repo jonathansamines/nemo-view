@@ -1,5 +1,7 @@
 'use strict';
-var async = require("async");
+
+var async = require('async');
+
 module.exports = {
 	"setup": function(config, result, callback) {
 		//console.log(config);
@@ -10,7 +12,7 @@ module.exports = {
 			function(cbk) {
 				setTimeout(function() {
 					cbk(null, {
-						"fine": "good"
+						fine: 'good'
 					});
 				}, 2000);
 			}
@@ -18,14 +20,12 @@ module.exports = {
 
 		sampleCalls.push(function(res, cbk) {
 			cbk(null, {
-				"result": "good"
+				result: 'good'
 			});
 		});
 
-
-		async.waterfall(sampleCalls, function(err, result) {
+		async.waterfall(sampleCalls, function(err) {
 			callback(err, config, returnObj);
 		});
-
 	}
 };
