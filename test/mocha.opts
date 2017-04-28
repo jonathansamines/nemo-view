@@ -1,0 +1,5 @@
+--check-leaks
+--ui bdd
+--globals should
+--timeout 30000
+--reporter spec

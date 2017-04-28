@@ -5,7 +5,9 @@
   "main": "index.js",
   "registerAs": "view",
   "scripts": {
-    "test": "grunt"
+    "test": "npm run lint && npm run test-unit",
+    "test-unit": "mocha test/*.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,7 @@
   "devDependencies": {
     "async": "^1.0.0",
     "eslint": "^3.19.0",
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-simple-mocha": "~0.4.0",
     "mocha": "^3.3.0",
-    "nconf": "*",
     "nemo": "^2.0.0"
   },
   "peerDependencies": {
