@@ -1,7 +1,7 @@
 'use strict';
 module.exports.waitForJSReady = function waitForJSReady(nemo) {
-  return nemo.driver.wait(function() {
-      return nemo.driver.executeScript(function() {
+  return nemo.driver.wait(() => {
+      return nemo.driver.executeScript(function () {
         if (window.$) {
           return window.$('body').data('loaded');
         }

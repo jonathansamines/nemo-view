@@ -1,24 +1,25 @@
 'use strict';
 
-var Nemo = require('nemo'),
-  path = require('path'),
-  normalize = require(path.resolve(__dirname, '../lib/normalize')),
-  assert = require('assert'),
-  nemo = {};
+const Nemo = require('nemo');
+const path = require('path');
+const assert = require('assert');
+const normalize = require(path.resolve(__dirname, '../lib/normalize'));
 
-describe('nemo-view @normalize@ module', function () {
-  before(function (done) {
+let nemo = {};
+
+describe('nemo-view @normalize@ module', () => {
+  before((done) => {
     nemo = Nemo(done);
   });
-  after(function (done) {
+
+  after((done) => {
     nemo.driver.quit().then(done);
   });
 
-
-  it('should correctly convert strings and objects to selenium-webdriver locator functions', function (done) {
-    var output,
-        Locator = nemo.wd.By.id('xyz').constructor,
-        verifications = [
+  it('should correctly convert strings and objects to selenium-webdriver locator functions', (done) => {
+    let output;
+    const Locator = nemo.wd.By.id('xyz').constructor;
+    const verifications = [
       {
         input: {
           type: 'xpath',
@@ -38,7 +39,8 @@ describe('nemo-view @normalize@ module', function () {
         output: nemo.wd.By.css('a span[class=foo]:nth-child')
       }
     ];
-    verifications.forEach(function (verification) {
+
+    verifications.forEach((verification) => {
       output = normalize(nemo, verification.input);
       assert.deepEqual(verification.output, output);
       assert(output instanceof Locator, 'Expected normalized locator to be an instance of Locator');
@@ -46,15 +48,15 @@ describe('nemo-view @normalize@ module', function () {
     done();
   });
 
-  it('should return unmodified input object if it is already a locator', function (done) {
-    var inputLocator = nemo.wd.By.id('xyz');
-    var outputLocator = normalize(nemo, inputLocator);
+  it('should return unmodified input object if it is already a locator', (done) => {
+    const inputLocator = nemo.wd.By.id('xyz');
+    const outputLocator = normalize(nemo, inputLocator);
     assert(inputLocator === outputLocator, 'expected output locator to be the input object');
     done();
   });
 
-  it('should correctly throw error @notype@', function (done) {
-    var noType = {
+  it('should correctly throw error @notype@', (done) => {
+    const noType = {
       "noType": {
         "locator": "foo"
       }
@@ -66,8 +68,9 @@ describe('nemo-view @normalize@ module', function () {
       done();
     }
   });
-  it('should correctly throw error @emptyType@', function (done) {
-    var emptyType = {
+
+  it('should correctly throw error @emptyType@', (done) => {
+    const emptyType = {
       "noType": {
         "locator": "foo",
         "type": ""
@@ -80,8 +83,9 @@ describe('nemo-view @normalize@ module', function () {
       done();
     }
   });
-  it('should correctly throw error @blankType@', function (done) {
-    var blankType = {
+
+  it('should correctly throw error @blankType@', (done) => {
+    const blankType = {
       "noType": {
         "locator": "foo",
         "type": "  "
@@ -94,8 +98,9 @@ describe('nemo-view @normalize@ module', function () {
       done();
     }
   });
-  it('should correctly throw error @invalidType@', function (done) {
-    var invalidType = {
+
+  it('should correctly throw error @invalidType@', (done) => {
+    const invalidType = {
       "noType": {
         "locator": "foo",
         "type": "bar"
@@ -108,8 +113,9 @@ describe('nemo-view @normalize@ module', function () {
       done();
     }
   });
-  it('should correctly throw error @noLocatorValidType@', function (done) {
-    var noLocatorValidType = {
+
+  it('should correctly throw error @noLocatorValidType@', (done) => {
+    const noLocatorValidType = {
       "noType": {
         "type": "css"
       }
@@ -121,8 +127,9 @@ describe('nemo-view @normalize@ module', function () {
       done();
     }
   });
-  it('should correctly throw error @noLocatorInvalidType@', function (done) {
-    var noLocatorInvalidType = {
+
+  it('should correctly throw error @noLocatorInvalidType@', (done) => {
+    const noLocatorInvalidType = {
       "noType": {
         "type": "bar"
       }

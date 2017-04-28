@@ -1,16 +1,16 @@
 'use strict';
 
-var async = require('async');
+const async = require('async');
 
 module.exports = {
 	"setup": function(config, result, callback) {
 		//console.log(config);
-		var returnObj = result;
+		const returnObj = result;
 		returnObj.samplePlugin = config.samplePlugin;
 		//array for waterfall methods
-		var sampleCalls = [
+		const sampleCalls = [
 			function(cbk) {
-				setTimeout(function() {
+				setTimeout(() => {
 					cbk(null, {
 						fine: 'good'
 					});
@@ -18,13 +18,13 @@ module.exports = {
 			}
 		];
 
-		sampleCalls.push(function(res, cbk) {
+		sampleCalls.push((res, cbk) => {
 			cbk(null, {
 				result: 'good'
 			});
 		});
 
-		async.waterfall(sampleCalls, function(err) {
+		async.waterfall(sampleCalls, (err) => {
 			callback(err, config, returnObj);
 		});
 	}

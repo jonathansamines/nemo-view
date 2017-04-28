@@ -1,13 +1,14 @@
 'use strict';
 
-var Nemo = require('nemo'),
-  nemo = {},
-  path = require('path'),
-  assert = require('assert'),
-  util = require(path.resolve(__dirname, 'util'));
+const Nemo = require('nemo');
+const path = require('path');
+const assert = require('assert');
+const util = require(path.resolve(__dirname, 'util'));
 
-describe('nemo-view @locale@', function () {
-  before(function (done) {
+let nemo = {};
+
+describe('nemo-view @locale@', () => {
+  before((done) => {
     nemo = Nemo({
       plugins: {
         view: {
@@ -17,52 +18,57 @@ describe('nemo-view @locale@', function () {
       }
     }, done);
   });
-  after(function (done) {
+
+  after((done) => {
     nemo.driver.quit().then(done);
   });
-  beforeEach(function (done) {
+
+  beforeEach((done) => {
     nemo.driver.get(nemo.data.baseUrl);
     util.waitForJSReady(nemo).then(util.doneSuccess(done), util.doneError(done));
   });
-  it('works for standard locators', function (done) {
-    nemo.view.form.text().getAttribute('id').then(function (idValue) {
+
+  it('works for standard locators', (done) => {
+    nemo.view.form.text().getAttribute('id').then((idValue) => {
       assert.equal(idValue, 'foo_text');
       nemo._config.set('data:locale', 'DE');
-    }).then(function () {
+    }).then(() => {
       return nemo.view.form.text().getAttribute('id');
-    }).then(function (idValue) {
+    }).then((idValue) => {
       assert.equal(idValue, 'bar_text');
       nemo._config.set('data:locale', '');
-    }).then(function () {
+    }).then(() => {
       return nemo.view.form.text().getAttribute('id');
-    }).then(function (idValue) {
+    }).then((idValue) => {
       assert.equal(idValue, 'foo_text');
       done();
     });
   });
-  it('works for Elements with inner locale scope', function (done) {
-    nemo.view.form.boxInnerLocale().then(function (elts) {
-      return elts[0].elt().getAttribute('type').then(function (typeValue) {
+
+  it('works for Elements with inner locale scope', (done) => {
+    nemo.view.form.boxInnerLocale().then((elts) => {
+      return elts[0].elt().getAttribute('type').then((typeValue) => {
         assert.equal(typeValue, 'text');
         nemo._config.set('data:locale', 'DE');
         return elts[0].elt().getAttribute('type');
       });
-    }).then(function (typeValue) {
+    }).then((typeValue) => {
       assert.equal(typeValue, 'button');
       done();
     });
   });
-  it('works for Elements with outer locale scope', function (done) {
+
+  it('works for Elements with outer locale scope', (done) => {
     nemo._config.set('data:locale', null);
-    nemo.view.form.boxOuterLocale().then(function (elts) {
-      elts[0].elt().getAttribute('id').then(function (idValue) {
+    nemo.view.form.boxOuterLocale().then((elts) => {
+      elts[0].elt().getAttribute('id').then((idValue) => {
         assert.equal(idValue, 'foo_text');
         return true;
       });
-    }).then(function () {
+    }).then(() => {
       nemo._config.set('data:locale', 'DE');
-      nemo.view.form.boxOuterLocale().then(function (elts) {
-        elts[0].elt().getAttribute('id').then(function (idValue) {
+      nemo.view.form.boxOuterLocale().then((elts) => {
+        elts[0].elt().getAttribute('id').then((idValue) => {
           assert.equal(idValue, 'bar_text');
           done();
         });

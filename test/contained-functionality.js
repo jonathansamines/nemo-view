@@ -1,22 +1,24 @@
 'use strict';
 
-var Nemo = require('nemo'),
-  path = require('path'),
-  util = require(path.resolve(__dirname, 'util')),
-  nemo = {};
+const Nemo = require('nemo');
+const path = require('path');
+const util = require(path.resolve(__dirname, 'util'));
 
-describe('nemo-view @pluginContainedFunctionality@', function () {
-  before(function(done) {
+let nemo = {};
+
+describe('nemo-view @pluginContainedFunctionality@', () => {
+  before((done) => {
     nemo = Nemo(done);
   });
-  after(function(done) {
+
+  after((done) => {
     nemo.driver.quit().then(done);
   });
-  it('should complete the shared functionality', function (done) {
+
+  it('should complete the shared functionality', (done) => {
     nemo.login.getPage();
     util.waitForJSReady(nemo);
     nemo.login.login('medelman-buyer@paypal.com', '11111111');
     nemo.login.logout().then(util.doneSuccess(done), util.doneError(done));
   });
-
 });

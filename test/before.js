@@ -1,7 +1,8 @@
 'use strict';
 
-var path = require('path');
-before(function(done) {
+const path = require('path');
+
+before((done) => {
   process.setMaxListeners(20);
   process.env.nemoBaseDir = path.join(process.cwd(), 'test');
 	done();

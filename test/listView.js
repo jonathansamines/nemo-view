@@ -1,28 +1,32 @@
 'use strict';
 
-var path = require('path'),
-  util = require(path.resolve(__dirname, 'util')),
-  Nemo = require('nemo'),
-  nemo = {};
+const path = require('path');
+const Nemo = require('nemo');
+const util = require(path.resolve(__dirname, 'util'));
 
-describe('nemo-view @listViewSuite@', function () {
-  before(function(done) {
+let nemo = {};
+
+describe('nemo-view @listViewSuite@', () => {
+  before((done) => {
     nemo = Nemo(done);
   });
-  after(function(done) {
+
+  after((done) => {
     nemo.driver.quit().then(done);
   });
-  beforeEach(function (done) {
+
+  beforeEach((done) => {
     nemo.driver.get(nemo.data.baseUrl);
     util.waitForJSReady(nemo).then(util.doneSuccess(done), util.doneError(done));
   });
-  it('should use the form list view to enter values and write to outy div @useListView@', function (done) {
-    nemo.view.formElementList.inputGroup().then(function (elts) {
-      elts.forEach(function (elt) {
+
+  it('should use the form list view to enter values and write to outy div @useListView@', (done) => {
+    nemo.view.formElementList.inputGroup().then((elts) => {
+      elts.forEach((elt) => {
         elt.text().sendKeys('abcd');
         elt.button().click();
       });
-      nemo.view.formElementList.outBox().getText().then(function (outText) {
+      nemo.view.formElementList.outBox().getText().then((outText) => {
         if (outText === 'abcdabcdabcdabcd') {
           done();
         } else {
@@ -30,7 +34,5 @@ describe('nemo-view @listViewSuite@', function () {
         }
       }, util.doneError(done));
     });
-
   });
-
 });

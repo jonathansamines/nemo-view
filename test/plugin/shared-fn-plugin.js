@@ -1,11 +1,11 @@
 'use strict';
 module.exports = {
 	"setup": function(whoami, nemo, callback) {
-		var login = {
+		const login = {
 			'view': {},
 			'locator': {}
 		};
-		var loginLocator = {
+		const loginLocator = {
 			"email": {
 				"locator": "email",
 				"type": "id"
@@ -32,7 +32,7 @@ module.exports = {
       return nemo.driver.get(nemo.data.baseUrl + '/login');
     };
 		login.login = function(email, password) {
-			var me = login.view.login;
+			const me = login.view.login;
 
 			me.email().clear();
 			me.email().sendKeys(email);
@@ -41,7 +41,7 @@ module.exports = {
 			return me.logoutButtonWait(10000);
 		};
 		login.logout = function() {
-			var me = login.view.login;
+			const me = login.view.login;
 			me.logoutButton().click();
 			return me.emailWait(10000);
 		};

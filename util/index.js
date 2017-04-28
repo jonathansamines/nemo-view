@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports.once = function once(fn) {
-  var called = false;
+  let called = false;
   return function (err) {
     if (called) {
       return undefined;

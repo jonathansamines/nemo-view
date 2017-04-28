@@ -1,11 +1,12 @@
 'use strict';
 
-var Nemo = require('nemo'),
-  assert = require('assert'),
-  nemo = {};
+const Nemo = require('nemo');
+const assert = require('assert');
 
-describe('nemo-view @constructor@', function () {
-  it('should do ? with malformed JSON file(s)', function (done) {
+let nemo = {};
+
+describe('nemo-view @constructor@', () => {
+  it('should do ? with malformed JSON file(s)', (done) => {
     nemo = Nemo({
       'plugins': {
         "view": {
@@ -13,7 +14,7 @@ describe('nemo-view @constructor@', function () {
           "arguments": ["path:mocks/badjson"]
         }
       }
-    }, function (err) {
+    }, (err) => {
       if (err) {
         done();
       } else {
@@ -21,7 +22,7 @@ describe('nemo-view @constructor@', function () {
       }
     });
   });
-  it('should give back _ methods with empty locator directory', function (done) {
+  it('should give back _ methods with empty locator directory', (done) => {
     nemo = Nemo({
       'plugins': {
         "view": {
@@ -29,7 +30,7 @@ describe('nemo-view @constructor@', function () {
           "arguments": ["path:mocks/empty"]
         }
       }
-    }, function (err) {
+    }, (err) => {
       if (err) {
         done(new Error('shouldnt have got an error in nemo callback'));
       } else {
@@ -40,7 +41,7 @@ describe('nemo-view @constructor@', function () {
       nemo.driver.quit();
     });
   });
-  it('should give back _ methods with empty locator directory', function (done) {
+  it('should give back _ methods with empty locator directory', (done) => {
     nemo = Nemo({
       'plugins': {
         "view": {
@@ -48,7 +49,7 @@ describe('nemo-view @constructor@', function () {
           "arguments": ["path:mocks/idontexist"]
         }
       }
-    }, function (err) {
+    }, (err) => {
       if (err) {
         done(new Error('shouldnt have got an error in nemo callback'));
       } else {
@@ -59,7 +60,7 @@ describe('nemo-view @constructor@', function () {
       nemo.driver.quit();
     });
   });
-  it('should give back _ methods with no locatorDirectory argument', function (done) {
+  it('should give back _ methods with no locatorDirectory argument', (done) => {
     nemo = Nemo({
       'plugins': {
         "view": {
@@ -67,7 +68,7 @@ describe('nemo-view @constructor@', function () {
           "arguments": null
         }
       }
-    }, function (err) {
+    }, (err) => {
       if (err) {
         done(new Error('shouldnt have got an error in nemo callback'));
       } else {
