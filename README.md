@@ -464,9 +464,8 @@ Follow along as we discuss a backwards compatible way to resolve this unfortunat
 configuration, for example the browser section under `test/config/config.json` like [here](https://github.com/paypal/nemo-view/blob/master/test/config/config.json#L14)
 
 * How to run unit tests?
-  * `grunt simplemocha` will just run unit tests
-  * `grunt` - default grunt task will run linting as well as unit tests
+  * `npm run test-unit` will just run unit tests
+  * `npm test` - default task will run linting as well as unit tests
   * To run directly using mocha assuming its globally installed on your system `mocha -t 60s`
   * Or a specific test,  `mocha --grep @_visible@withParent@negative@ -t 60s`
   * Or post `npm install` on nemo-view module, you can run `node_modules/.bin/mocha --grep @_visible@withParent@negative@ -t 60s`
-
