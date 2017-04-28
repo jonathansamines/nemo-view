@@ -20,10 +20,11 @@
   },
   "devDependencies": {
     "async": "^1.0.0",
+    "eslint": "^3.19.0",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-simple-mocha": "~0.4.0",
-    "mocha": "^2",
+    "mocha": "^3.3.0",
     "nconf": "*",
     "nemo": "^2.0.0"
   },
