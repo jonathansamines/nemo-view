@@ -1,5 +1,11 @@
 # nemo-view changelog
 
+## Next
+
+* Upgrade project code to ES6.
+* Upgrade project linter from jshint to eslint
+* Remove grunt in favor of npm scripts
+
 ## v2.1.2
 
 * Adding ability to find elements under parent element using underscore methods (PR #52)
@@ -11,7 +17,7 @@
   - Fix: `lib/normalize` did not handle the case of attempting to normalize an already normalized locator
   - Fix: README doc for `_visible` and `_present` methods
   - New: unit tests for `_visible` and `_present` methods
-  
+
 ## v2.1.0
 
 * Now using [shush](https://github.com/krakenjs/shush) so that users can add comments to their locator files. This way `nemo-view` is consistent with `nemo`

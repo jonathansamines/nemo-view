@@ -14,45 +14,49 @@
  \*───────────────────────────────────────────────────────────────────────────*/
 "use strict";
 
-const View = require('./lib/view');
-const util = require('./util');
-const Locreator = require('./lib/locreator');
 const debug = require('debug');
-const log = debug('nemo-view:log');
-const error = debug('nemo-view:error');
 const glob = require("glob");
 const path = require('path');
 const shush = require('shush');
+const View = require('./lib/view');
+const util = require('./util');
+const Locreator = require('./lib/locreator');
+const log = debug('nemo-view:log');
+const error = debug('nemo-view:error');
 
 function addView(nemo, locreator) {
 
   return function (json, viewNSArray, hang) {
     log('add view', viewNSArray);
     let viewNS = (hang !== undefined && hang === false) ? {} : nemo.view;
-    //error
+
+    // error
     if (viewNSArray[0] === 'addView') {
       throw new Error('[nemo-view] reserves "addView". Please rename your view.');
     }
+
     if (viewNSArray[0].indexOf('_') === 0) {
       throw new Error('[nemo-view] reserves any name starting with _. Please rename your view.');
     }
+
     for (let i = 0; i < viewNSArray.length - 1; i++) {
       viewNS[viewNSArray[i]] = (viewNS[viewNSArray[i]]) ? viewNS[viewNSArray[i]] : {};
       viewNS = viewNS[viewNSArray[i]];
     }
+
     if (viewNS[viewNSArray[viewNSArray.length - 1]] !== undefined) {
       error('[nemo-view] There is already a view registered in that namespace');
       throw new Error('[nemo-view] There is already a view registered in that namespace');
     }
-    //default hang to true
 
-
+    // default hang to true
     const _view = View(nemo, locreator, json);
 
     viewNS[viewNSArray[viewNSArray.length - 1]] = _view;
     return _view;
   };
 }
+
 module.exports.setup = function (_locatorDirectory, _nemo, __callback) {
   log('plugin setup is called');
 
@@ -98,6 +102,4 @@ module.exports.setup = function (_locatorDirectory, _nemo, __callback) {
   } else {
     callback(null);
   }
-
-
 };
