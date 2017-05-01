@@ -22,6 +22,7 @@ describe('nemo-view @constructor@', () => {
       }
     });
   });
+
   it('should give back _ methods with empty locator directory', (done) => {
     nemo = Nemo({
       'plugins': {
@@ -41,6 +42,7 @@ describe('nemo-view @constructor@', () => {
       nemo.driver.quit();
     });
   });
+
   it('should give back _ methods with empty locator directory', (done) => {
     nemo = Nemo({
       'plugins': {
@@ -60,6 +62,7 @@ describe('nemo-view @constructor@', () => {
       nemo.driver.quit();
     });
   });
+
   it('should give back _ methods with no locatorDirectory argument', (done) => {
     nemo = Nemo({
       'plugins': {

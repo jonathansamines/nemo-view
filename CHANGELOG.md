@@ -1,7 +1,8 @@
 # nemo-view changelog
 
-## Next
+## v3.0.0-alpha
 
+* Upgrade to selenium-drivex 2
 * Upgrade project code to ES6.
 * Upgrade project linter from jshint to eslint
 * Remove grunt in favor of npm scripts
