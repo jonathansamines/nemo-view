@@ -131,24 +131,27 @@ Which can be used as follows:
 
 ```javascript
 describe('nemo-view @verySimple@', function () {
-  before(function (done) {
+  before((done) => {
     nemo = Nemo(done);
   });
-  after(function (done) {
+
+  after((done) => {
     nemo.driver.quit().then(done);
   });
 
-  beforeEach(function (done) {
+  beforeEach((done) => {
     nemo.driver.get(nemo.data.baseUrl);
     util.waitForJSReady(nemo).then(util.doneSuccess(done), util.doneError(done));
   });
-  it('should use the form view to enter values and write to outy div @useView@', function (done) {
-    nemo.view._find('css:#outy').getTagName().then(function (tn) {
+
+  it('should use the form view to enter values and write to outy div @useView@', (done) => {
+    nemo.view._find('css:#outy').getTagName().then((tn) => {
       assert.equal(tn.toLowerCase(), 'div');
     });
-    nemo.view._finds('body').then(function (bodyArray) {
+
+    nemo.view._finds('body').then((bodyArray) => {
       return bodyArray[0].getTagName();
-    }).then(function (tn) {
+    }).then((tn) => {
       assert.equal(tn.toLowerCase(), 'body');
     }).then(done, util.doneError(done));
   });
@@ -186,18 +189,20 @@ Each including a set of helper methods for each locator as documented below. And
 
 ```javascript
 describe('nemo-view @simpleViewSuite@', function () {
-  before(function(done) {
+  before((done) => {
     nemo = Nemo(done);
   });
-  after(function(done) {
+
+  after((done) => {
     nemo.driver.quit().then(done);
   });
-  beforeEach(function (done) {
 
+  beforeEach((done) => {
     nemo.driver.get(nemo.data.baseUrl);
     util.waitForJSReady(nemo).then(util.doneSuccess(done), util.doneError(done));
   });
-  it('should use the form view to enter values and write to outy div @useView@', function (done) {
+
+  it('should use the form view to enter values and write to outy div @useView@', (done) => {
     nemo.view.form.fooText().sendKeys('foo');
     nemo.driver.sleep(300);
     nemo.view.form.fooButton().click();
@@ -208,7 +213,7 @@ describe('nemo-view @simpleViewSuite@', function () {
     nemo.view.form.bangText().sendKeys('bang');
     nemo.view.form.bangButton().click();
     nemo.driver.sleep(3000);
-    nemo.view.form.outBox().getText().then(function (outText) {
+    nemo.view.form.outBox().getText().then((outText) => {
       assert.equal(outText, 'foobarbingbang');
       done();
     }, util.doneError(done));
@@ -220,8 +225,8 @@ describe('nemo-view @simpleViewSuite@', function () {
 You can pass locators from `[locatorName]By` to underscore methods like `_find` or `_finds` etc. For example,
 
 ```javascript
-nemo.view._finds(nemo.view.paypal.languageBy()).then(function(languages){
-    languages.forEach(function(language){
+nemo.view._finds(nemo.view.paypal.languageBy()).then((languages) => {
+    languages.forEach((language) => {
         //do stuff
     });
  });
@@ -230,7 +235,7 @@ nemo.view._finds(nemo.view.paypal.languageBy()).then(function(languages){
 Finding elements under another element
 
 ```javascript
-nemo.view._finds('div.fielder', nemo.view.simple.parentBanner()).then(function (divs) {
+nemo.view._finds('div.fielder', nemo.view.simple.parentBanner()).then((divs) => {
       //do stuff
 });
 ```
@@ -241,7 +246,6 @@ nemo.view._finds('div.fielder', nemo.view.simple.parentBanner()).then(function (
 You may want to publish complete flows as a nemo plugin. That way you can import the functionality and access as a plugin. The following is an example of that.
 
 Please see the `test/contained-functionality.js` test file and `test/plugin/shared-fn-plugin.js` plugin file for an example of this.
-
 
 
 
@@ -331,14 +335,14 @@ Using the addView method, you can add a view at any time using the same formats 
 
 ```javascript
 //add using a locator in the autoBaseDir/locator directory
-var myPage = nemo.view.addView('myPage');
-var login = nemo.view.addView({
-	"name": "login",
-	"locator": "path:locator/loggedOut/login"
+const myPage = nemo.view.addView('myPage');
+const login = nemo.view.addView({
+	name: 'login',
+	locator: 'path:locator/loggedOut/login'
 });
-var addCard = nemo.view.addView({
-	"name": "addCard",
-	"locator": "module:nemo-paypal-locators/addCard"
+const addCard = nemo.view.addView({
+	name: 'addCard',
+	locator: 'module:nemo-paypal-locators/addCard'
 });
 
 The addView method will return the view object. It will also dedupe to prevent extra cycles adding the same view multiple times, or overwriting of a view with another of the same name.

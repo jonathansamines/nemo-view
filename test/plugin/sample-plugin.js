@@ -3,7 +3,7 @@
 const async = require('async');
 
 module.exports = {
-	"setup": function(config, result, callback) {
+	'setup': function(config, result, callback) {
 		//console.log(config);
 		const returnObj = result;
 		returnObj.samplePlugin = config.samplePlugin;

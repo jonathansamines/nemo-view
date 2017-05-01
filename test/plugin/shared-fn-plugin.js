@@ -1,26 +1,26 @@
 'use strict';
 module.exports = {
-	"setup": function(whoami, nemo, callback) {
+	'setup': function(whoami, nemo, callback) {
 		const login = {
 			'view': {},
 			'locator': {}
 		};
 		const loginLocator = {
-			"email": {
-				"locator": "email",
-				"type": "id"
+			'email': {
+				'locator': 'email',
+				'type': 'id'
 			},
-			"password": {
-				"locator": "password",
-				"type": "id"
+			'password': {
+				'locator': 'password',
+				'type': 'id'
 			},
-			"loginButton": {
-				"locator": "input[type='button'][class='login']",
-				"type": "css"
+			'loginButton': {
+				'locator': 'input[type=\'button\'][class=\'login\']',
+				'type': 'css'
 			},
-      "logoutButton": {
-        "locator": "input[type='button'][class='logout']",
-        "type": "css"
+      'logoutButton': {
+        'locator': 'input[type=\'button\'][class=\'logout\']',
+        'type': 'css'
       }
 
 		};

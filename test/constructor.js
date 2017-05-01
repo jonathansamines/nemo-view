@@ -9,9 +9,9 @@ describe('nemo-view @constructor@', () => {
   it('should do ? with malformed JSON file(s)', (done) => {
     nemo = Nemo({
       'plugins': {
-        "view": {
-          "module": "path:../",
-          "arguments": ["path:mocks/badjson"]
+        'view': {
+          'module': 'path:../',
+          'arguments': ['path:mocks/badjson']
         }
       }
     }, (err) => {
@@ -25,9 +25,9 @@ describe('nemo-view @constructor@', () => {
   it('should give back _ methods with empty locator directory', (done) => {
     nemo = Nemo({
       'plugins': {
-        "view": {
-          "module": "path:../",
-          "arguments": ["path:mocks/empty"]
+        'view': {
+          'module': 'path:../',
+          'arguments': ['path:mocks/empty']
         }
       }
     }, (err) => {
@@ -44,9 +44,9 @@ describe('nemo-view @constructor@', () => {
   it('should give back _ methods with empty locator directory', (done) => {
     nemo = Nemo({
       'plugins': {
-        "view": {
-          "module": "path:../",
-          "arguments": ["path:mocks/idontexist"]
+        'view': {
+          'module': 'path:../',
+          'arguments': ['path:mocks/idontexist']
         }
       }
     }, (err) => {
@@ -63,9 +63,9 @@ describe('nemo-view @constructor@', () => {
   it('should give back _ methods with no locatorDirectory argument', (done) => {
     nemo = Nemo({
       'plugins': {
-        "view": {
-          "module": "path:../",
-          "arguments": null
+        'view': {
+          'module': 'path:../',
+          'arguments': null
         }
       }
     }, (err) => {

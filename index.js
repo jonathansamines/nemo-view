@@ -12,10 +12,10 @@
  │   See the License for the specific language governing permissions and       │
  │   limitations under the License.                                            │
  \*───────────────────────────────────────────────────────────────────────────*/
-"use strict";
+'use strict';
 
 const debug = require('debug');
-const glob = require("glob");
+const glob = require('glob');
 const path = require('path');
 const shush = require('shush');
 const View = require('./lib/view');
@@ -83,9 +83,10 @@ module.exports.setup = function (_locatorDirectory, _nemo, __callback) {
 
   //get all files in the locator directory and sub-directories
   if (locatorDirectory !== null) {
-    glob("**/*.json", {cwd: locatorDirectory}, (err, files) => {
+    glob('**/*.json', { cwd: locatorDirectory }, (err, files) => {
       log('going to process the following json into views', files);
-      files.forEach(function (file) {
+
+      files.forEach((file) => {
         const addViewArray = [shush(path.resolve(locatorDirectory, file))];
         const viewPathArray = file.split('/');
         viewPathArray[viewPathArray.length - 1] = viewPathArray[viewPathArray.length - 1].split('.json')[0];

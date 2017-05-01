@@ -57,8 +57,8 @@ describe('nemo-view @normalize@ module', () => {
 
   it('should correctly throw error @notype@', (done) => {
     const noType = {
-      "noType": {
-        "locator": "foo"
+      'noType': {
+        'locator': 'foo'
       }
     };
     try {
@@ -71,9 +71,9 @@ describe('nemo-view @normalize@ module', () => {
 
   it('should correctly throw error @emptyType@', (done) => {
     const emptyType = {
-      "noType": {
-        "locator": "foo",
-        "type": ""
+      'noType': {
+        'locator': 'foo',
+        'type': ''
       }
     };
     try {
@@ -86,9 +86,9 @@ describe('nemo-view @normalize@ module', () => {
 
   it('should correctly throw error @blankType@', (done) => {
     const blankType = {
-      "noType": {
-        "locator": "foo",
-        "type": "  "
+      'noType': {
+        'locator': 'foo',
+        'type': '  '
       }
     };
     try {
@@ -101,9 +101,9 @@ describe('nemo-view @normalize@ module', () => {
 
   it('should correctly throw error @invalidType@', (done) => {
     const invalidType = {
-      "noType": {
-        "locator": "foo",
-        "type": "bar"
+      'noType': {
+        'locator': 'foo',
+        'type': 'bar'
       }
     };
     try {
@@ -116,8 +116,8 @@ describe('nemo-view @normalize@ module', () => {
 
   it('should correctly throw error @noLocatorValidType@', (done) => {
     const noLocatorValidType = {
-      "noType": {
-        "type": "css"
+      'noType': {
+        'type': 'css'
       }
     };
     try {
@@ -130,8 +130,8 @@ describe('nemo-view @normalize@ module', () => {
 
   it('should correctly throw error @noLocatorInvalidType@', (done) => {
     const noLocatorInvalidType = {
-      "noType": {
-        "type": "bar"
+      'noType': {
+        'type': 'bar'
       }
     };
     try {
